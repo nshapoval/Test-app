@@ -3,6 +3,8 @@ import React, { PureComponent } from 'react';
 import actions from '../actions';
 import {connect} from 'react-redux';
 import {selectProfile} from '../selectors';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 class ProfileForm extends PureComponent {
   constructor(props){
@@ -31,17 +33,13 @@ class ProfileForm extends PureComponent {
       department: this.department.current.value.trim(),
       position: this.position.current.value.trim(),
       email: this.email.current.value.trim(),
-    }
+    };
     this.props.saveUser(user);
-  }
-
-  handleChange = ({ name, value }) => {
-
-  }
-
+  };
 
   render() {
-    const {isLoading, user} = this.props;
+      const {isLoading, user} = this.props;
+
       return (
         <Form loading={isLoading} className = "profileForm" onSubmit={this.handleSubmit}> 
           <Form.Field inline >
@@ -51,8 +49,8 @@ class ProfileForm extends PureComponent {
             <input
               name='firstName'
               ref={this.firstName}
-              defaultValue={user.firstName} 
-              onChange={this.handleChange} />
+              defaultValue={user.firstName}
+            />
           </Form.Field>
           <Form.Field inline >
             <Label>
@@ -61,8 +59,8 @@ class ProfileForm extends PureComponent {
             <input
               name='lastName'
               ref={this.lastName}
-              defaultValue={user.lastName} 
-              onChange={this.handleChange} />
+              defaultValue={user.lastName}
+            />
           </Form.Field>
           <Form.Field inline >
             <Label>
@@ -71,8 +69,8 @@ class ProfileForm extends PureComponent {
             <input
               name='company'
               ref={this.company}
-              defaultValue={user.company} 
-              onChange={this.handleChange} />
+              defaultValue={user.company}
+            />
           </Form.Field>
           <Form.Field inline >
             <Label>
@@ -81,8 +79,8 @@ class ProfileForm extends PureComponent {
             <input
               name='department'
               ref={this.department}
-              defaultValue={user.department} 
-              onChange={this.handleChange} />
+              defaultValue={user.department}
+            />
           </Form.Field>
           <Form.Field inline >
             <Label>
@@ -91,8 +89,8 @@ class ProfileForm extends PureComponent {
             <input
               name='position'
               ref={this.position}
-              defaultValue={user.position} 
-              onChange={this.handleChange} />
+              defaultValue={user.position}
+            />
           </Form.Field>
           <Form.Field inline >
             <Label>
@@ -102,8 +100,8 @@ class ProfileForm extends PureComponent {
               name='email'
               type="email"
               ref={this.email}
-              defaultValue={user.email} 
-              onChange={this.handleChange} />
+              defaultValue={user.email}
+            />
           </Form.Field>
           <Form.Button content='Save' />
         </Form>
@@ -114,12 +112,21 @@ class ProfileForm extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     ...selectProfile(state),
+    users:state.firestore.data.users,
   }
-}
+};
 
 const mapDispatchToProps = {
   fetchUser: actions.fetchUserSuccess,
   saveUser: actions.saveUserSuccess,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);
+export default compose (
+  firestoreConnect(props => [
+    {
+      collection: 'users',
+      storeAs: 'users'
+    }
+  ]),
+  connect(mapStateToProps, mapDispatchToProps)
+ )(ProfileForm)
