@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 
 import actionTypes  from './constants';
 
-const initialState = fromJS({
+export const initialState = fromJS({
   user: {},
   isLoading: false,
   error: {}

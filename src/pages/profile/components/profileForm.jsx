@@ -6,7 +6,7 @@ import {selectProfile} from '../selectors';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 
-class ProfileForm extends PureComponent {
+export class ProfileForm extends PureComponent {
   constructor(props){
     super(props);
     this.firstName = React.createRef();
