@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { ProfileForm } from './profileForm'
-import '../../../setupTets'
+import { Index } from './index'
+import '../../../../setupTets'
 
-describe('ProfileForm component', () => {
+describe('Index component', () => {
   const props = { 
     user: {
       firstName: 'John',
@@ -13,9 +13,9 @@ describe('ProfileForm component', () => {
     isLoading: false,
     fetchUser: () => {},
     saveUser: () => {},
-  }
+  };
   it('Should have 6 inputs and button', ()=>{
-    const wraper = shallow(<ProfileForm {...{...props, user: {}}} />);
+    const wraper = shallow(<Index {...{...props, user: {}}} />);
 
     const firstName = wraper.find("input[name~='firstName']");
     expect(firstName).toHaveLength(1)
@@ -34,10 +34,10 @@ describe('ProfileForm component', () => {
 
     const position = wraper.find("input[name~='position']");
     expect(position).toHaveLength(1);
-  })
+  });
 
   it('Should have inputs with user data as defaultValue', ()=>{
-    const wraper = shallow(<ProfileForm {...props} />);
+    const wraper = shallow(<Index {...props} />);
 
     const firstName = wraper.find("input[name~='firstName']");
     expect(firstName.props().defaultValue).toEqual(props.user.firstName);
@@ -48,4 +48,4 @@ describe('ProfileForm component', () => {
     const email = wraper.find("input[name~='email']");
     expect(email.props().defaultValue).toEqual(props.user.email);
   })
-})
+});

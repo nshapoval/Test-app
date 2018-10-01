@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import ProfileForm from './components/profileForm';
+import ProfileForm from './components/form';
 import './style.scss';
 
 class ProfilePageBody extends PureComponent {

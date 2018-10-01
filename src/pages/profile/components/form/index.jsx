@@ -1,10 +1,10 @@
 import {Form, Label} from 'semantic-ui-react';
 import React, {PureComponent} from 'react';
-import actions from '../actions';
+import actions from '../../actions';
 import {connect} from 'react-redux';
-import {selectProfile} from '../selectors';
+import {selectProfile} from '../../selectors';
 
-export class ProfileForm extends PureComponent {
+export class Index extends PureComponent {
   constructor(props) {
     super(props);
     this.firstName = React.createRef();
@@ -114,4 +114,4 @@ const mapDispatchToProps = {
   saveUser: actions.saveUser,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm)
+export default connect(mapStateToProps, mapDispatchToProps)(Index)

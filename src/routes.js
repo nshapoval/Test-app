@@ -1,6 +1,6 @@
 import React from  'react';
 import { Redirect, Route, Switch } from 'react-router';
-import Profile from './pages/profile/container';
+import Profile from './pages/profile';
 
 const routes = [
   {
