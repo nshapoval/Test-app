@@ -14,21 +14,17 @@ describe('ProfileForm component', () => {
     fetchUser: () => {},
     saveUser: () => {},
   }
-  
-  it('User data was loaded', ()=>{
-    const wraper = shallow(<ProfileForm {...props} />);
+  it('Should have 6 inputs and button', ()=>{
+    const wraper = shallow(<ProfileForm {...{...props, user: {}}} />);
 
     const firstName = wraper.find("input[name~='firstName']");
     expect(firstName).toHaveLength(1)
-    expect(firstName.props().defaultValue).toEqual(props.user.firstName);
 
     const lastName = wraper.find("input[name~='lastName']")
     expect(lastName).toHaveLength(1)
-    expect(lastName.props().defaultValue).toEqual(props.user.lastName);
 
     const email = wraper.find("input[name~='email']");
     expect(email).toHaveLength(1);
-    expect(email.props().defaultValue).toEqual(props.user.email);
 
     const company = wraper.find("input[name~='company']");
     expect(company).toHaveLength(1);
@@ -39,5 +35,17 @@ describe('ProfileForm component', () => {
     const position = wraper.find("input[name~='position']");
     expect(position).toHaveLength(1);
   })
-  
+
+  it('Should have inputs with user data as defaultValue', ()=>{
+    const wraper = shallow(<ProfileForm {...props} />);
+
+    const firstName = wraper.find("input[name~='firstName']");
+    expect(firstName.props().defaultValue).toEqual(props.user.firstName);
+
+    const lastName = wraper.find("input[name~='lastName']")
+    expect(lastName.props().defaultValue).toEqual(props.user.lastName);
+
+    const email = wraper.find("input[name~='email']");
+    expect(email.props().defaultValue).toEqual(props.user.email);
+  })
 })
