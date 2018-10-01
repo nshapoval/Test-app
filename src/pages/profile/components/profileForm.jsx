@@ -1,13 +1,11 @@
-import { Form, Label } from 'semantic-ui-react';
-import React, { PureComponent } from 'react';
+import {Form, Label} from 'semantic-ui-react';
+import React, {PureComponent} from 'react';
 import actions from '../actions';
 import {connect} from 'react-redux';
 import {selectProfile} from '../selectors';
-import { compose } from 'redux';
-import { firestoreConnect } from 'react-redux-firebase';
 
 export class ProfileForm extends PureComponent {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.firstName = React.createRef();
     this.lastName = React.createRef();
@@ -34,74 +32,74 @@ export class ProfileForm extends PureComponent {
   };
 
   render() {
-      const {isLoading, user} = this.props;
+    const {isLoading, user} = this.props;
 
-      return (
-        <Form loading={isLoading} className="profileForm" onSubmit={this.handleSubmit}>
-          <Form.Field inline >
-            <Label>
-              First Name
-            </Label>
-            <input
-              name='firstName'
-              ref={this.firstName}
-              defaultValue={user.firstName}
-            />
-          </Form.Field>
-          <Form.Field inline >
-            <Label>
-              Last Name
-            </Label>
-            <input
-              name='lastName'
-              ref={this.lastName}
-              defaultValue={user.lastName}
-            />
-          </Form.Field>
-          <Form.Field inline >
-            <Label>
-              Company
-            </Label>
-            <input
-              name='company'
-              ref={this.company}
-              defaultValue={user.company}
-            />
-          </Form.Field>
-          <Form.Field inline >
-            <Label>
-              Department
-            </Label>
-            <input
-              name='department'
-              ref={this.department}
-              defaultValue={user.department}
-            />
-          </Form.Field>
-          <Form.Field inline >
-            <Label>
-              Position
-            </Label>
-            <input
-              name='position'
-              ref={this.position}
-              defaultValue={user.position}
-            />
-          </Form.Field>
-          <Form.Field inline >
-            <Label>
-              Email
-            </Label>
-            <input
-              name='email'
-              type="email"
-              ref={this.email}
-              defaultValue={user.email}
-            />
-          </Form.Field>
-          <Form.Button content='Save' />
-        </Form>
-      );
+    return (
+      <Form loading={isLoading} className="profileForm" onSubmit={this.handleSubmit}>
+        <Form.Field inline>
+          <Label>
+            First Name
+          </Label>
+          <input
+            name='firstName'
+            ref={this.firstName}
+            defaultValue={user.firstName}
+          />
+        </Form.Field>
+        <Form.Field inline>
+          <Label>
+            Last Name
+          </Label>
+          <input
+            name='lastName'
+            ref={this.lastName}
+            defaultValue={user.lastName}
+          />
+        </Form.Field>
+        <Form.Field inline>
+          <Label>
+            Company
+          </Label>
+          <input
+            name='company'
+            ref={this.company}
+            defaultValue={user.company}
+          />
+        </Form.Field>
+        <Form.Field inline>
+          <Label>
+            Department
+          </Label>
+          <input
+            name='department'
+            ref={this.department}
+            defaultValue={user.department}
+          />
+        </Form.Field>
+        <Form.Field inline>
+          <Label>
+            Position
+          </Label>
+          <input
+            name='position'
+            ref={this.position}
+            defaultValue={user.position}
+          />
+        </Form.Field>
+        <Form.Field inline>
+          <Label>
+            Email
+          </Label>
+          <input
+            name='email'
+            type="email"
+            ref={this.email}
+            defaultValue={user.email}
+          />
+        </Form.Field>
+        <Form.Button content='Save'/>
+      </Form>
+    );
   }
 }
 

@@ -9,7 +9,6 @@ const config = {
     messagingSenderId: "130623263822"
   };
 firebase.initializeApp(config);
-// Initialize Cloud Firestore through Firebase
 
 const db = firebase.firestore();
 db.settings({
