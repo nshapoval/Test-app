@@ -16,8 +16,6 @@ function* putUser ({payload}) {
   try {
     const id = yield select(state => state.profile.get('user').get('id'));
     const res = yield call(putUserService, id, payload);
-    console.log('res');
-    console.log(res);
     yield put(actions.saveUserSuccess(res));
   } catch(err) {
     yield put(actions.saveUserError(err));
