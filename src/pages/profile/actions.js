@@ -1,10 +1,9 @@
 import actionTypes  from './constants';
 
 export default {
-  fetchUser: (id) => {
+  fetchUser: () => {
     return {
       type: actionTypes.USERS_FETCH,
-      payload: id,
     }
   },
   fetchUserSuccess: (user) => {
