@@ -7,6 +7,7 @@ import RouteMap from './routes';
 import './index.scss';
 import 'semantic-ui-css/semantic.min.css';
 import registerServiceWorker from './registerServiceWorker';
+require('dotenv').config()
 
 const Root = (
   <Provider store={store}>

@@ -1,4 +1,4 @@
-import { takeEvery, put, call, all, fork } from 'redux-saga/effects';
+import { takeEvery, put, call, all, fork, select } from 'redux-saga/effects';
 import constants from './constants';
 import actions from './actions';
 import { getUsers, putUser as putUserService } from './services';
@@ -14,7 +14,8 @@ function* fetchUser () {
 
 function* putUser ({payload}) {
   try {
-    const res = yield call(putUserService, 'XRmU5PqW7prQPBdNdC8Y', payload);
+    const id = yield select(state => state.profile.get('user').get('id'));
+    const res = yield call(putUserService, id, payload);
     console.log('res');
     console.log(res);
     yield put(actions.saveUserSuccess(res));

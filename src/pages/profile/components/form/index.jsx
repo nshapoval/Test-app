@@ -4,7 +4,7 @@ import actions from '../../actions';
 import {connect} from 'react-redux';
 import {selectProfile} from '../../selectors';
 
-export class Index extends PureComponent {
+export class ProfileForm extends PureComponent {
   constructor(props) {
     super(props);
     this.firstName = React.createRef();
@@ -114,4 +114,4 @@ const mapDispatchToProps = {
   saveUser: actions.saveUser,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index)
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm)

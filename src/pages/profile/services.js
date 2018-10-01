@@ -11,7 +11,7 @@ export const getUsers = async () => {
 };
 
 export const putUser = async (id, data) => {
-    const res = await db.collection("users").doc(id).set(data);
+    await db.collection("users").doc(id).set(data);
     const getresult = await db.collection("users").doc(id);
     return getresult.data();
 };
