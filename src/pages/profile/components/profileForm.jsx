@@ -18,11 +18,7 @@ export class ProfileForm extends PureComponent {
   }
 
   componentDidMount(){
-    this.props.fetchUser({
-      firstName: 'John',
-      lastName: 'Doe',
-      department: 'Web-Dev'
-    });
+    this.props.fetchUser();
   }
 
   handleSubmit = () => {
@@ -112,13 +108,12 @@ export class ProfileForm extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     ...selectProfile(state),
-    users:state.firestore.data.users,
   }
 };
 
 const mapDispatchToProps = {
-  fetchUser: actions.fetchUserSuccess,
-  saveUser: actions.saveUserSuccess,
+  fetchUser: actions.fetchUser,
+  saveUser: actions.saveUser,
 };
 
 export default compose (

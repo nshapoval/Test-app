@@ -8,7 +8,6 @@ import './index.scss';
 import 'semantic-ui-css/semantic.min.css';
 import registerServiceWorker from './registerServiceWorker';
 
-
 const Root = (
   <Provider store={store}>
     <BrowserRouter>
