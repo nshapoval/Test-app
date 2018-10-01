@@ -17,7 +17,7 @@ export class ProfileForm extends PureComponent {
     this.email = React.createRef();
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchUser();
   }
 
@@ -116,12 +116,4 @@ const mapDispatchToProps = {
   saveUser: actions.saveUser,
 };
 
-export default compose (
-  firestoreConnect(props => [
-    {
-      collection: 'users',
-      storeAs: 'users'
-    }
-  ]),
-  connect(mapStateToProps, mapDispatchToProps)
- )(ProfileForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm)

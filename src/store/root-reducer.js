@@ -5,6 +5,4 @@ import { firestoreReducer } from 'redux-firestore';
 
 export const state = combineReducers({
   profile: profileReduser,
-  firebase: firebaseReducer,
-  firestore: firestoreReducer
 });
