@@ -6,9 +6,7 @@ import { getUsers } from './services';
 
 function* fetchUser () {
   try {
-      console.log('here_here',)
       const result = yield call(getUsers);
-      console.log('here_result', result)
       yield put(actions.fetchUserSuccess(result[0]));
   } catch(err) {
     yield put(actions.fetchUserError(err));
