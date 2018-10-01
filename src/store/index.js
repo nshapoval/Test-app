@@ -13,14 +13,7 @@ const middleware = process.env.NODE_ENV === 'development'
   ? composeWithDevTools(applyMiddleware(sagaMiddleware))
   : applyMiddleware(sagaMiddleware);
 
-const store = createStore(state,
-  compose (
-    reactReduxFirebase(firebase),
-    reduxFirestore(firebase),
-    middleware
-  )
-);
-
+const store = createStore(state, middleware);
 sagaMiddleware.run(rootSaga);
 
 export default store;

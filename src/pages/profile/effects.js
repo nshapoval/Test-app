@@ -1,26 +1,24 @@
 import axios from 'axios';
+import { takeEvery, put, call, all, fork } from 'redux-saga/effects';
 import constants from './constants';
 import actions from './actions';
-import { takeEvery, put, call, all, fork } from 'redux-saga/effects';
+import { getUsers } from './services';
 
-function* fetchUser ({payload}) {
+function* fetchUser () {
   try {
-    const res = yield call(axios, {
-      method: 'get',
-      url: `/api/user/${payload}`,
-    });
-    yield put(actions.fetchUserSuccess(res.user));
+      const result = yield call(getUsers);
+      yield put(actions.fetchUserSuccess(result[0]));
   } catch(err) {
-    yield put(actions.fetchUserError(err)) 
+    yield put(actions.fetchUserError(err));
   }
 }
 
-function* takeUser(){
-  takeEvery(constants.USERS_FETCH, fetchUser)
+function* takeUsersFetch(){
+  yield takeEvery(constants.USERS_FETCH, fetchUser)
 }
 
 export default function* (){
   yield all([
-    fork(takeUser)
+    fork(takeUsersFetch)
   ])
 }

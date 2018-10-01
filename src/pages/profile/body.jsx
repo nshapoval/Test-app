@@ -3,9 +3,6 @@ import ProfileForm from './components/profileForm';
 import './style.scss';
 
 class ProfilePageBody extends PureComponent {
-    componentDidMount() {
-
-    }
     render() {
         return (
             <div className="Profile">
