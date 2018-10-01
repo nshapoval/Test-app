@@ -41,7 +41,7 @@ export class ProfileForm extends PureComponent {
       const {isLoading, user} = this.props;
 
       return (
-        <Form loading={isLoading} className = "profileForm" onSubmit={this.handleSubmit}> 
+        <Form loading={isLoading} className="profileForm" onSubmit={this.handleSubmit}>
           <Form.Field inline >
             <Label>
               First Name

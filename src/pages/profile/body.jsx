@@ -8,7 +8,7 @@ class ProfilePageBody extends PureComponent {
     }
     render() {
         return (
-            <div className="App">
+            <div className="Profile">
                 <h1>Profile</h1>
                 <ProfileForm />
             </div>

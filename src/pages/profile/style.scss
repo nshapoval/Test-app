@@ -1,17 +1,49 @@
-.App {
+.Profile {
   text-align: center;
   margin: 20px auto;
-}
-.App-intro {
-  font-size: large;
-}
-.App-logo {
-  margin: auto;
-  display: block;
+  h1 {
+    animation: logo 3.5s ease;
+    font-family: inherit;
+  }
+  .profileForm{
+    margin: 0 auto;
+    width: 300px;
+    .field {
+      display: flex;
+      justify-content: space-between;
+      .label {
+        width: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .button {
+        margin: auto;
+      }
+    }
+    animation: myAnimate 2.5s ease;
+  }
 }
 
-.profileForm.ui.form {
-  margin: 0 auto;
-  width: 400px;
+@keyframes myAnimate{
+  0%{
+    opacity: 0;
+    margin-top: 200px;
+  }
+  100%{
+    opacity: 1;
+  }
 }
+
+@keyframes logo{
+  0%{
+    transform: rotate(xx);
+    opacity: 0;
+  }
+  100%{
+    transform: rotate(xx);
+    opacity: 1;
+  }
+}
+
 
