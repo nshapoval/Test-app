@@ -9,7 +9,7 @@ export default {
   fetchUserSuccess: (user) => {
     return {
       type: actionTypes.USERS_FETCH_SUCCESS,
-      payload: user,
+      payload: user || {},
     }
   },
   fetchUserError: (error) => {
@@ -18,10 +18,10 @@ export default {
       payload: error,
     }
   },
-  saveUser: (id) => {
+  saveUser: (user) => {
     return {
       type: actionTypes.USERS_SAVE,
-      payload: id,
+      payload: user,
     }
   },
   saveUserSuccess: (user) => {
